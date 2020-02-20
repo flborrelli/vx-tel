@@ -25,7 +25,7 @@ function App() {
   const elevenToSixteen = values.minutes * 1.9;
   const elevenToSeventeen = values.minutes * 1.7;
   const elevenToEighteen = values.minutes * 0.9;
-  const seventeenToEleven = values.minutes * 2.9;
+  const sixteenToEleven = values.minutes * 2.9;
   const seventeenToEleven = values.minutes * 2.7;
   const eighteenToEleven = values.minutes * 1.9;
 
@@ -43,7 +43,7 @@ function App() {
         }
         break;
       case "016":
-        setValueWithoutPlan(seventeenToEleven);
+        setValueWithoutPlan(sixteenToEleven);
         break;
       case "017":
         setValueWithoutPlan(seventeenToEleven);
@@ -54,19 +54,78 @@ function App() {
     }
   };
 
-  const planCalculation = initialValue => {
+
+
+  const planCalculation = () => {
     switch (values.plan) {
       case "Plano FaleMais 30":
-        setValueWithPlan()
+        if(values.minutes <= 30){
+          setValueWithPlan(0)
+        } else{
+          if(values.origin === '011' && values.destination === '016'){
+           setValueWithPlan((values.minutes - 30) * 1.10 * 1.9) 
+          }
+          else if(values.origin === '011' && values.destination === '017'){
+           setValueWithPlan((values.minutes - 30) * 1.10 * 1.7) 
+        }
+          else if(values.origin === '011' && values.destination === '018'){
+           setValueWithPlan((values.minutes - 30) * 1.10 * 0.9) 
+        }
+        else if(values.origin === '016' && values.destination === '011'){
+           setValueWithPlan((values.minutes - 30) * 1.10 * 2.9) 
+        }
+        else if(values.origin === '017' && values.destination === '011'){
+           setValueWithPlan((values.minutes - 30) * 1.10 * 2.7) 
+        }
+        else if(values.origin === '018' && values.destination === '011'){
+           setValueWithPlan((values.minutes - 30) * 1.10 * 1.9) 
+        }}      
         break;
       case "Plano FaleMais 60":
-        setValueWithoutPlan(values.minutes * 2.9);
+        if(values.minutes <= 60){
+          setValueWithPlan(0)
+        } else{
+          if(values.origin === '011' && values.destination === '016'){
+           setValueWithPlan((values.minutes - 60) * 1.10 * 1.9) 
+          }
+          else if(values.origin === '011' && values.destination === '017'){
+           setValueWithPlan((values.minutes - 60) * 1.10 * 1.7) 
+        }
+          else if(values.origin === '011' && values.destination === '018'){
+           setValueWithPlan((values.minutes - 60) * 1.10 * 0.9) 
+        }
+        else if(values.origin === '016' && values.destination === '011'){
+           setValueWithPlan((values.minutes - 60) * 1.10 * 2.9) 
+        }
+        else if(values.origin === '017' && values.destination === '011'){
+           setValueWithPlan((values.minutes - 60) * 1.10 * 2.7) 
+        }
+        else if(values.origin === '018' && values.destination === '011'){
+           setValueWithPlan((values.minutes - 60) * 1.10 * 1.9) 
+        }}
         break;
       case "Plano FaleMais 120":
-        setValueWithoutPlan(values.minutes * 2.7);
-        break;
-      case "018":
-        setValueWithoutPlan(values.minutes * 1.9);
+        if(values.minutes <= 120){
+          setValueWithPlan(0)
+        } else{
+          if(values.origin === '011' && values.destination === '016'){
+           setValueWithPlan((values.minutes - 120) * 1.10 * 1.9) 
+          }
+          else if(values.origin === '011' && values.destination === '017'){
+           setValueWithPlan((values.minutes - 120) * 1.10 * 1.7) 
+        }
+          else if(values.origin === '011' && values.destination === '018'){
+           setValueWithPlan((values.minutes - 120) * 1.10 * 0.9) 
+        }
+        else if(values.origin === '016' && values.destination === '011'){
+           setValueWithPlan((values.minutes - 120) * 1.10 * 2.9) 
+        }
+        else if(values.origin === '017' && values.destination === '011'){
+           setValueWithPlan((values.minutes - 120) * 1.10 * 2.7) 
+        }
+        else if(values.origin === '018' && values.destination === '011'){
+           setValueWithPlan((values.minutes - 120) * 1.10 * 1.9) 
+        }}
         break;
     }
   };
@@ -75,6 +134,7 @@ function App() {
     e.preventDefault();
     console.log("submiting");
     callPriceCalculation();
+    planCalculation();
   };
 
   const handleInputChange = (e, result) => {
