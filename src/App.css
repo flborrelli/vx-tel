@@ -3,6 +3,24 @@
   padding: 0;
 }
 
+html {
+  font-size: 10px;
+}
+
+img {
+  width: 100%;
+}
+
+/* NAVBAR */
+
+.navbar-title {
+  letter-spacing: 0.1rem;
+}
+
+.nav-img {
+  width: 5vw;
+}
+
 .table-container {
 }
 

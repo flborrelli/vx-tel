@@ -1,35 +1,50 @@
 import React from "react";
-import { Dropdown, Button, Input, Table } from "semantic-ui-react";
+import { Dropdown, Button, Input, Form } from "semantic-ui-react";
 
-const DDD = [
-  { key: 1, text: '011', value: 1 },
-  { key: 2, text: '016', value: 2 },
-  { key: 3, text: '017', value: 3 },
-  { key: 4, text: '018', value: 4 },
+function VxTable(props) {
+
+  const originDDD = [
+  { key: 1, text: '011', value: '011' },
+  { key: 2, text: '016', value: '016' },
+  { key: 3, text: '017', value: '017' },
+  { key: 4, text: '018', value: '018' },
+]
+
+const destinationDDD = [
+  { key: 1, text: '011', value: '011' },
+  { key: 2, text: '016', value: '016' },
+  { key: 3, text: '017', value: '017' },
+  { key: 4, text: '018', value: '018' },
 ]
 
 const plan = [
-  { key: 1, text: 'Plano FaleMais 30', value: 1 },
-  { key: 2, text: 'Plano FaleMais 60', value: 2 },
-  { key: 3, text: 'Plano FaleMais 120', value: 3 },
+  { key: 1, text: 'Plano FaleMais 30', value: 'Plano FaleMais 30' },
+  { key: 2, text: 'Plano FaleMais 60', value: 'Plano FaleMais 60' },
+  { key: 3, text: 'Plano FaleMais 120', value: 'Plano FaleMais 120' },
 ]
 
-  
-
-function VxTable() {
   return (
     <>
-    <div>
+    <div className='mt-5'>
     <div className="table-container d-flex justify-content-center">
-      <Dropdown clearable options={DDD} selection />
-      <Dropdown clearable options={DDD} selection />
-      <Input icon='users' iconPosition='left' placeholder='How many minutes?' />
-      <Dropdown clearable options={plan} selection />
-      <h3>R$</h3>
-      <h3>R$</h3>
+    <Form onSubmit={props.getSubmit}>
+      <Dropdown clearable options={originDDD} value={props.getOrigin} onChange={props.getInputChange} name='origin' selection />
+        <Dropdown clearable options={destinationDDD} value={props.getDestination} onChange={props.getInputChange} name='destination' selection/>
+        <Input icon='users' iconPosition='left' value={props.getMinutes} onChange={props.getInputChange} name='minutes' placeholder='How many minutes?' type='number'/>
+        <Dropdown clearable options={plan} value={props.getPlan} onChange={props.getInputChange} name='plan' selection />
+        <Button icon='search' type='submit' color='teal'></Button>
+    </Form>
+      
     </div>
-    <div className='d-flex justify-content-center'>
-      <Button primary>Primary</Button>
+    <div className='d-flex justify-content-around mt-4'>
+    <div className="value-box">
+    <h3>Com FaleMais</h3>
+    <h4>R$ {props.getValueWithPlan}</h4>
+    </div>
+    <div className="value-box">
+    <h3>Sem FaleMais</h3>
+    <h4>R$ {props.getValueWithoutPlan}</h4>
+    </div>
     </div>
     </div>
     </>
