@@ -136,7 +136,7 @@ function App() {
     <>
       <MyNavbar />
       <div className="App d-flex flex-column align-items-center mt-5">
-        <h1 className=''>Conheça nossos planos e simule os valores abaixo</h1>
+        <h1 className='mb-5 header'>Conheça nossos planos e simule as tarifas</h1>
         <VxTable
           getValueWithPlan={valueWithPlan}
           getValueWithoutPlan={valueWithoutPlan}

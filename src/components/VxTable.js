@@ -25,10 +25,11 @@ function VxTable(props) {
   return (
     <>
       <div className="form-container container">
-        <Form onSubmit={props.getSubmit} className='form-subcontainer'>
-        <div className="row">  
-          <div className="col-sm my-3">
-            <div className="">
+        <Form onSubmit={props.getSubmit} className='form-subcontainer mt-2'>
+        <div className="row justify-content-around">  
+          <div className="col-sm-5 my-3">
+            <div className="d-flex justify-content-center align-items-center mb-3">
+            <i className="fas fa-home mr-2 house"></i>
               <p>DDD Origem</p>
             </div>
             <Dropdown
@@ -38,16 +39,16 @@ function VxTable(props) {
               value={props.getOrigin}
               onChange={props.getInputChange}
               name="origin"
+              placeholder='De onde liga?'
               selection
             />
           </div>
 
-          <div className="d-flex align-items-center mt-3">
-            <i class="fas fa-arrow-right"></i>
-          </div>
+      
 
-          <div className="col-sm my-3">
-            <div className="">
+          <div className="col-sm-5 my-3">
+          <div className="d-flex justify-content-center align-items-center mb-3">
+            <i class="fas fa-map-pin mr-2 pin"></i>
               <p>DDD Destino</p>
             </div>
             <Dropdown
@@ -56,19 +57,19 @@ function VxTable(props) {
               value={props.getDestination}
               onChange={props.getInputChange}
               name="destination"
+              placeholder='Para onde quer ligar?'
               selection
             />
           </div>
 
           </div>
-          <div className='row'>
-          <div className="col-sm my-3">
+          <div className='row justify-content-around mt-3'>
+          <div className="col-sm-5 my-3">
             <div className="d-flex justify-content-center align-items-center mb-3">
-              <i className="fas fa-phone-alt mr-2"></i>
-              <p>Minutos/mês</p>
+              <i className="fas fa-phone-alt mr-2 phone"></i>
+              <p>Minutos</p>
             </div>
             <Input
-              icon="users"
               iconPosition="left"
               value={props.getMinutes}
               onChange={props.getInputChange}
@@ -80,13 +81,15 @@ function VxTable(props) {
             />
           </div>
 
-          <div className="col-sm my-3">
+
+          <div className="col-sm-5 my-3">
             <div className="d-flex justify-content-center align-items-center mb-3">
-              <i className="fas fa-star mr-2"></i>
+              <i className="fas fa-star mr-2 star"></i>
               <p>Escolha seu Plano FaleMais</p>
             </div>
             <Dropdown
               clearable
+              placeholder='FaleMais 30, 60 ou 120?'
               options={plan}
               value={props.getPlan}
               onChange={props.getInputChange}
@@ -96,8 +99,8 @@ function VxTable(props) {
           </div>
           </div>
 
-          <div className="">
-            <Button icon="search" type="submit" color="teal"></Button>
+          <div className="mb-4 mt-4">
+            <Button className='submit-button' type="submit" color="teal">Simule agora</Button>
           </div>
         
         </Form>

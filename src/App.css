@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +13,21 @@ img {
   width: 100%;
 }
 
+body {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+/* APP */
+
+.App {
+  /* border: solid; */
+}
+
 /* NAVBAR */
+
+.mynavbar {
+  box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.75);
+}
 
 .navbar-title {
   letter-spacing: 0.1rem;
@@ -21,19 +37,78 @@ img {
   width: 5vw;
 }
 
+
+/* HEADER */
+
+.header{
+  color: rgba(54, 49, 49, 0.75);
+  letter-spacing: 0.1rem;
+}
+
+/* FORM */
+
+
 .form-container {
+  max-width: 60vw !important;
   box-shadow: 0px 0px 5px 3px rgba(175, 165, 165, 0.75);
   border-radius: 3px;
-  background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
-  /* padding: 20px; */
+  background-color: rgba(218, 213, 203, 0.75);
 }
+
+.form-container p {
+  letter-spacing: 0.05rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: rgba(39, 36, 36, 0.75);
+}
+
+.form-container i {
+  font-size: 1.4rem;
+}
+
+.house{
+  color: rgba(41, 134, 29, 0.8);
+}
+
+.pin {
+  color: rgb(230, 71, 31);
+}
+
+.phone {
+  color: rgb(25, 95, 199);
+}
+
+.star {
+  color: rgba(196, 185, 38, 0.9)
+}
+
+.submit-button {
+  font-size: 1.5rem !important;
+}
+
+
 
 .form-subcontainer {
   text-align: center;
 }
 
-/* APP */
+@media (max-width: 475px) {
 
-.App {
-  border: solid;
+  .navbar-title {
+    font-size: 2rem;
+  }
+  
+  .nav-img {
+    width: 18vw;
+  }
+  
+  .form-container {
+    max-width: 90vw !important;
+  }
+
+  .header{
+    text-align: center;
+    font-size: 1.9rem;
+  }
+  
 }

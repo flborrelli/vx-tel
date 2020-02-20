@@ -6,7 +6,7 @@ import { Navbar } from 'react-bootstrap';
 function MyNavbar (){
 
   return(
-    <Navbar bg="light">
+    <Navbar className='mynavbar' bg="light">
     <Navbar.Brand href="#home">
       <img
         src="/images/logo.png"
