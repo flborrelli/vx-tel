@@ -17,6 +17,20 @@ function App() {
   const [valueWithPlan, setValueWithPlan] = useState(0);
   const [valueWithoutPlan, setValueWithoutPlan] = useState(0);
 
+  const [originDDD, setOriginDDD] = useState([
+    { key: 1, text: "011", value: "011" },
+    { key: 2, text: "016", value: "016" },
+    { key: 3, text: "017", value: "017" },
+    { key: 4, text: "018", value: "018" }
+  ]);
+
+  const [destinationDDD, setDestinationDDD] = useState([
+    { key: 1, text: "011", value: "011" },
+    { key: 2, text: "016", value: "016" },
+    { key: 3, text: "017", value: "017" },
+    { key: 4, text: "018", value: "018" }
+  ]);
+
   useEffect(() => {
     setValues(values);
     setValueWithPlan(valueWithPlan);
@@ -119,6 +133,8 @@ function App() {
     }
   };
 
+  
+
   const handleSubmit = e => {
     e.preventDefault();
     console.log("submiting");
@@ -146,6 +162,8 @@ function App() {
           getDestination={values.destination}
           getMinutes={values.minutes}
           getPlan={values.plan}
+          getOriginDDD={originDDD}
+          getDestinationDDD={destinationDDD}
         />
       </div>
     </>
@@ -154,4 +172,3 @@ function App() {
 
 export default App;
 
-// getValueWithPlan={valueWithPlan} getValueWithoutPlan={valueWithoutPlan}

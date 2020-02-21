@@ -2,19 +2,6 @@ import React from "react";
 import { Dropdown, Button, Input, Form } from "semantic-ui-react";
 
 function VxTable(props) {
-  const originDDD = [
-    { key: 1, text: "011", value: "011" },
-    { key: 2, text: "016", value: "016" },
-    { key: 3, text: "017", value: "017" },
-    { key: 4, text: "018", value: "018" }
-  ];
-
-  const destinationDDD = [
-    { key: 1, text: "011", value: "011" },
-    { key: 2, text: "016", value: "016" },
-    { key: 3, text: "017", value: "017" },
-    { key: 4, text: "018", value: "018" }
-  ];
 
   const plan = [
     { key: 1, text: "Plano FaleMais 30", value: "Plano FaleMais 30" },
@@ -35,7 +22,7 @@ function VxTable(props) {
             <Dropdown
               className=""
               clearable
-              options={originDDD}
+              options={props.getOriginDDD}
               value={props.getOrigin}
               onChange={props.getInputChange}
               name="origin"
@@ -53,7 +40,7 @@ function VxTable(props) {
             </div>
             <Dropdown
               clearable
-              options={destinationDDD}
+              options={props.getDestinationDDD}
               value={props.getDestination}
               onChange={props.getInputChange}
               name="destination"
@@ -85,7 +72,7 @@ function VxTable(props) {
           <div className="col-sm-5 my-3">
             <div className="d-flex justify-content-center align-items-center mb-3">
               <i className="fas fa-star mr-2 star"></i>
-              <p>Escolha seu Plano FaleMais</p>
+              <p>Escolha seu Plano</p>
             </div>
             <Dropdown
               clearable
@@ -106,15 +93,44 @@ function VxTable(props) {
         </Form>
       </div>
 
-      <div className="d-flex justify-content-around mt-4">
-        <div className="value-box">
-          <h3>Com FaleMais</h3>
-          <h4>R$ {props.getValueWithPlan}</h4>
+      <div className="d-flex justify-content-around mt-5 result-container">
+        {
+          props.getValueWithPlan === props.getValueWithoutPlan ?
+          <>
+          <div className="value-box d-flex flex-column align-items-center">
+          <h3>Com {props.getPlan}</h3>
+          <h4>R$ {props.getValueWithPlan.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</h4>
         </div>
-        <div className="value-box">
-          <h3>Sem FaleMais</h3>
-          <h4>R$ {props.getValueWithoutPlan}</h4>
+        <div className="value-box d-flex flex-column align-items-center">
+          <h3>Sem {props.getPlan}</h3>
+          <h4>R$ {props.getValueWithoutPlan.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</h4>
         </div>
+        </>
+          :  <>{
+            props.getValueWithPlan < props.getValueWithoutPlan ?
+            <>
+            <div className="value-box d-flex flex-column align-items-center">
+          <h3>Com {props.getPlan}</h3>
+          <h4 className='value-green'>R$ {props.getValueWithPlan.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</h4>
+        </div>
+        <div className="value-box d-flex flex-column align-items-center">
+          <h3>Sem {props.getPlan}</h3>
+          <h4 className='value-red'>R$ {props.getValueWithoutPlan.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</h4>
+        </div>
+        </>
+            :
+            <>
+            <div className="value-box d-flex flex-column align-items-center">
+          <h3>Com {props.getPlan}</h3>
+          <h4 className='value-red'>R$ {props.getValueWithPlan.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</h4>
+        </div>
+        <div className="value-box d-flex flex-column align-items-center">
+          <h3>Sem {props.getPlan}</h3>
+          <h4 className='value-green'>R$ {props.getValueWithoutPlan.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</h4>
+        </div>
+        </>
+          } </>
+        }
       </div>
     </>
   );
