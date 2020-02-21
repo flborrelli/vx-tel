@@ -27,6 +27,15 @@ $ npm start
 
 - You will also see any lint errors in the console.
 
+## Instructions
+
+**1.** Select a phone Code from where you would make the call (011, 016, 017 or 018).<br>
+**2.** Select the outgoing phone Code to where the call are being made.<br>
+**3.** Select how many minutes you think you will monthly spend.<br>
+**4.** Select a plan.<br>
+**5.** Submit.<br>
+**6.** Check which fee is better!<br>
+
 
 ## Technologies
 
