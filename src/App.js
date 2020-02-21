@@ -10,7 +10,7 @@ function App() {
   const [values, setValues] = useState({
     origin: "",
     destination: "",
-    minutes: '',
+    minutes: "",
     plan: ""
   });
 
@@ -30,7 +30,6 @@ function App() {
     { key: 3, text: "017", value: "017" },
     { key: 4, text: "018", value: "018" }
   ]);
-
 
   useEffect(() => {
     setValues(values);
@@ -133,48 +132,47 @@ function App() {
     }
   };
 
-  
-
   const handleSubmit = e => {
     e.persist();
     callPriceCalculation();
     planCalculation();
   };
-  
+
   const handleInputChange = (e, result) => {
     const { name, value } = result || e.target.value;
     setValues({ ...values, [name]: value });
   };
 
   const handleSelect = () => {
-    if(values.origin === '011'){
+    if (values.origin === "011") {
       setDestinationDDD([
         { key: 2, text: "016", value: "016" },
-    { key: 3, text: "017", value: "017" },
-    { key: 4, text: "018", value: "018" }
-  ])
-    } else if (values.origin === '016' || values.origin === '017' || values.origin === '018') {
-      setDestinationDDD([
-    { key: 1, text: "011", value: "011" },
-  ])
+        { key: 3, text: "017", value: "017" },
+        { key: 4, text: "018", value: "018" }
+      ]);
+    } else if (
+      values.origin === "016" ||
+      values.origin === "017" ||
+      values.origin === "018"
+    ) {
+      setDestinationDDD([{ key: 1, text: "011", value: "011" }]);
     }
-  }
+  };
 
-  const handleReset = (e) => {
+  const handleReset = e => {
     e.preventDefault();
-    setValues({origin: "",
-    destination: "",
-    minutes: '',
-    plan: ""});
+    setValues({ origin: "", destination: "", minutes: "", plan: "" });
     setValueWithPlan(0);
     setValueWithoutPlan(0);
-}
+  };
 
   return (
     <>
       <MyNavbar />
       <div className="App d-flex flex-column align-items-center mt-5">
-        <h1 className='mb-5 header'>Conheça nossos planos e simule as tarifas</h1>
+        <h1 className="mb-5 header">
+          Conheça nossos planos e simule as tarifas
+        </h1>
         <VxTable
           getValueWithPlan={valueWithPlan}
           getValueWithoutPlan={valueWithoutPlan}
@@ -195,4 +193,3 @@ function App() {
 }
 
 export default App;
-
