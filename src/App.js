@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import VxTable from "./components/VxTable";
 import MyNavbar from "./components/MyNavBar";
-import { Button, Dropdown } from "semantic-ui-react";
+import Footer from "./components/Footer";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -31,10 +31,12 @@ function App() {
     { key: 4, text: "018", value: "018" }
   ]);
 
+
   useEffect(() => {
     setValues(values);
     setValueWithPlan(valueWithPlan);
     setValueWithoutPlan(valueWithoutPlan);
+    handleSelect();
   }, [values, valueWithPlan, valueWithoutPlan]);
 
   const elevenToSixteen = 1.9;
@@ -141,12 +143,35 @@ function App() {
     callPriceCalculation();
     planCalculation();
   };
-
+  
   const handleInputChange = (e, result) => {
     const { name, value } = result || e.target.value;
     setValues({ ...values, [name]: value });
-    console.log(values);
   };
+
+  const handleSelect = () => {
+    if(values.origin === '011'){
+      setDestinationDDD([
+        { key: 2, text: "016", value: "016" },
+    { key: 3, text: "017", value: "017" },
+    { key: 4, text: "018", value: "018" }
+  ])
+    } else if (values.origin === '016' || values.origin === '017' || values.origin === '018') {
+      setDestinationDDD([
+    { key: 1, text: "011", value: "011" },
+  ])
+    }
+  }
+
+  const handleReset = (e) => {
+    e.preventDefault();
+    setValues({origin: "",
+    destination: "",
+    minutes: '',
+    plan: ""});
+    setValueWithPlan(0);
+    setValueWithoutPlan(0);
+}
 
   return (
     <>
@@ -164,8 +189,10 @@ function App() {
           getPlan={values.plan}
           getOriginDDD={originDDD}
           getDestinationDDD={destinationDDD}
+          resetForm={handleReset}
         />
       </div>
+      <Footer />
     </>
   );
 }

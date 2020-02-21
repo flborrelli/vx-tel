@@ -17,12 +17,6 @@ body {
   font-family: 'Josefin Sans', sans-serif;
 }
 
-/* APP */
-
-.App {
-  /* border: solid; */
-}
-
 /* NAVBAR */
 
 .mynavbar {
@@ -53,7 +47,7 @@ body {
   max-width: 60vw !important;
   box-shadow: 0px 0px 5px 3px rgba(175, 165, 165, 0.75);
   border-radius: 3px;
-  background-color: rgba(163, 159, 159, 0.8);
+  background-color: rgba(184, 179, 179, 0.8);
 }
 
 .form-container p {
@@ -84,7 +78,11 @@ body {
 }
 
 .submit-button {
-  font-size: 1.5rem !important;
+  font-size: 1.4rem !important;
+}
+
+.clean-button {
+  font-size: 1.3rem !important;
 }
 
 
@@ -110,6 +108,14 @@ body {
 .value-red {
   font-weight: bolder;
   color: red;
+}
+
+.footer {
+  background-color: rgba(240, 232, 232, 0.75);
+}
+
+.footer h4 {
+  font-size: 1.2rem;
 }
 
 @media (max-width: 480px) {
@@ -150,6 +156,30 @@ body {
   .header{
     text-align: center;
     font-size: 1.9rem;
+  }
+
+  .result-container{
+    width: 90vw;
+  }
+
+  .value-box {
+    width: 45vw;
+    border: solid 1px grey;
+    margin: 0 1vw;
+  }
+
+  .value-box h3 {
+    font-size: 1.2rem;
+  }
+  
+  .value-green{
+    font-weight: bolder;
+    color: green;
+  }
+  
+  .value-red {
+    font-weight: bolder;
+    color: red;
   }
   
 }

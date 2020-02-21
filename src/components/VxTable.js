@@ -1,5 +1,6 @@
 import React from "react";
-import { Dropdown, Button, Input, Form } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
+import {Input, Form, Dropdown} from 'semantic-ui-react-form-validator';
 
 function VxTable(props) {
 
@@ -12,7 +13,8 @@ function VxTable(props) {
   return (
     <>
       <div className="form-container container">
-        <Form onSubmit={props.getSubmit} className='form-subcontainer mt-2'>
+        <Form onSubmit={props.getSubmit} className='form-subcontainer mt-2'
+        >
         <div className="row justify-content-around">  
           <div className="col-sm-5 my-3">
             <div className="d-flex justify-content-center align-items-center mb-3">
@@ -20,7 +22,6 @@ function VxTable(props) {
               <p>DDD Origem</p>
             </div>
             <Dropdown
-              className=""
               clearable
               options={props.getOriginDDD}
               value={props.getOrigin}
@@ -28,6 +29,8 @@ function VxTable(props) {
               name="origin"
               placeholder='De onde liga?'
               selection
+              validators={['required']} 
+          errorMessages={['Este campo é obrigatório']} 
             />
           </div>
 
@@ -46,6 +49,8 @@ function VxTable(props) {
               name="destination"
               placeholder='Para onde quer ligar?'
               selection
+              validators={['required']} 
+          errorMessages={['Este campo é obrigatório']} 
             />
           </div>
 
@@ -64,7 +69,8 @@ function VxTable(props) {
               placeholder="Quantos minutos?"
               type="number"
               min='0'
-              required
+              validators={['required']}
+          errorMessages={['Este campo é obrigatório']}
             />
           </div>
 
@@ -81,6 +87,8 @@ function VxTable(props) {
               value={props.getPlan}
               onChange={props.getInputChange}
               name="plan"
+          validators={['required']}
+          errorMessages={['Este campo é obrigatório']}
               selection
             />
           </div>
@@ -89,11 +97,15 @@ function VxTable(props) {
           <div className="mb-4 mt-4">
             <Button className='submit-button' type="submit" color="teal">Simule agora</Button>
           </div>
-        
+
+          <div className="mb-4 mt-4">
+            <Button onClick={props.resetForm} className='clean-button' type="submit" color="red">Limpar</Button>
+          </div>
+          
         </Form>
       </div>
 
-      <div className="d-flex justify-content-around mt-5 result-container">
+      <div className="d-flex justify-content-around mt-5 result-container mb-5">
         {
           props.getValueWithPlan === props.getValueWithoutPlan ?
           <>
