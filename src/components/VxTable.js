@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Button } from "semantic-ui-react";
 import {Input, Form, Dropdown} from 'semantic-ui-react-form-validator';
 
@@ -148,4 +148,4 @@ function VxTable(props) {
   );
 }
 
-export default VxTable;
+export default memo(VxTable);
