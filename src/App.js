@@ -137,7 +137,6 @@ function App() {
 
   const handleSubmit = e => {
     e.persist();
-    console.log("submiting");
     callPriceCalculation();
     planCalculation();
   };

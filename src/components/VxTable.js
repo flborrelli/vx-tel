@@ -38,7 +38,7 @@ function VxTable(props) {
 
           <div className="col-sm-5 my-3">
           <div className="d-flex justify-content-center align-items-center mb-3">
-            <i class="fas fa-map-pin mr-2 pin"></i>
+            <i className="fas fa-map-pin mr-2 pin"></i>
               <p>DDD Destino</p>
             </div>
             <Dropdown
