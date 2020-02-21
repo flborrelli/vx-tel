@@ -34,10 +34,8 @@ function App() {
 
   useEffect(() => {
     setValues(values);
-    setValueWithPlan(valueWithPlan);
-    setValueWithoutPlan(valueWithoutPlan);
     handleSelect();
-  }, [values, valueWithPlan, valueWithoutPlan]);
+  }, [values]);
 
   const elevenToSixteen = 1.9;
   const elevenToSeventeen = 1.7;
@@ -138,7 +136,7 @@ function App() {
   
 
   const handleSubmit = e => {
-    e.preventDefault();
+    e.persist();
     console.log("submiting");
     callPriceCalculation();
     planCalculation();
